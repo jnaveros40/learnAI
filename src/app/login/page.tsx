@@ -1,22 +1,50 @@
 "use client";
 
-import React from "react";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 
 const LoginPage = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && auth) {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // Si ya está autenticado, redirigir al dashboard
+          window.location.href = "/dashboard";
+        } else {
+          setLoading(false);
+        }
+      });
+
+      return () => unsubscribe();
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
   const handleGoogleLogin = async () => {
+    if (!auth) return;
+    
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
       console.log("Usuario logueado:", result.user);
-      // Redirigir a la página principal después del login exitoso
-      window.location.href = "/dashboard";
+      // La redirección se manejará automáticamente por onAuthStateChanged
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
       alert("Error al iniciar sesión con Google");
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-xl">Cargando...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-600">

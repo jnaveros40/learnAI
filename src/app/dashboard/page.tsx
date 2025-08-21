@@ -1,18 +1,57 @@
 "use client";
 
-import React from "react";
-import { signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { signOut, onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && auth) {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+        setLoading(false);
+        
+        // Si no hay usuario autenticado, redirigir al login
+        if (!currentUser) {
+          window.location.href = "/login";
+        }
+      });
+
+      return () => unsubscribe();
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
   const handleLogout = async () => {
     try {
-      await signOut(auth);
-      window.location.href = "/";
+      if (auth) {
+        await signOut(auth);
+        window.location.href = "/";
+      }
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-xl">Cargando...</div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-xl">Redirigiendo...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-100">
