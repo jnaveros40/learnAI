@@ -35,14 +35,16 @@ const LoginPage = () => {
       const result = await signInWithPopup(auth, provider);
       console.log("Usuario logueado:", result.user);
       // La redirección se manejará automáticamente por onAuthStateChanged
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error al iniciar sesión:", error);
-      if (error.code === 'auth/invalid-api-key') {
+      const firebaseError = error as { code?: string; message?: string };
+      
+      if (firebaseError.code === 'auth/invalid-api-key') {
         alert("Error de configuración: API Key de Firebase inválida");
-      } else if (error.code === 'auth/popup-closed-by-user') {
+      } else if (firebaseError.code === 'auth/popup-closed-by-user') {
         alert("Inicio de sesión cancelado por el usuario");
       } else {
-        alert(`Error al iniciar sesión: ${error.message}`);
+        alert(`Error al iniciar sesión: ${firebaseError.message || 'Error desconocido'}`);
       }
     }
   };
