@@ -3,13 +3,15 @@ import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
 import { getAuth, Auth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyBl6SYjXQrkBDpvmv04vaS2Zdx82KCZhM0",
+  authDomain: "learnai-5da33.firebaseapp.com",
+  projectId: "learnai-5da33",
+  storageBucket: "learnai-5da33.firebasestorage.app",
+  messagingSenderId: "936613703151",
+  appId: "1:936613703151:web:42569190009483a4795a1a",
 };
+
+
 
 // Verificar que todas las variables estén presentes
 const requiredEnvVars = ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId'];
