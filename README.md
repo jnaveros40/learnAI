@@ -12,6 +12,8 @@ yarn dev
 pnpm dev
 # or
 bun dev
+
+npx next dev --port 3012 --turbopack
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

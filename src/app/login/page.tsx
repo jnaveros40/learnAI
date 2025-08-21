@@ -25,16 +25,25 @@ const LoginPage = () => {
   }, []);
 
   const handleGoogleLogin = async () => {
-    if (!auth) return;
+    if (!auth) {
+      alert("Firebase no está configurado correctamente. Verifica las variables de entorno.");
+      return;
+    }
     
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
       console.log("Usuario logueado:", result.user);
       // La redirección se manejará automáticamente por onAuthStateChanged
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error al iniciar sesión:", error);
-      alert("Error al iniciar sesión con Google");
+      if (error.code === 'auth/invalid-api-key') {
+        alert("Error de configuración: API Key de Firebase inválida");
+      } else if (error.code === 'auth/popup-closed-by-user') {
+        alert("Inicio de sesión cancelado por el usuario");
+      } else {
+        alert(`Error al iniciar sesión: ${error.message}`);
+      }
     }
   };
 
@@ -57,9 +66,20 @@ const LoginPage = () => {
             Inicia sesión para acceder a tu plataforma de aprendizaje
           </p>
           
+          {!auth ? (
+            <div className="text-red-600 mb-4 p-4 bg-red-50 rounded-lg">
+              ⚠️ Firebase no está configurado correctamente. Verifica las variables de entorno.
+            </div>
+          ) : null}
+          
           <button
             onClick={handleGoogleLogin}
-            className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center gap-3"
+            disabled={!auth}
+            className={`w-full font-bold py-3 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center gap-3 ${
+              !auth 
+                ? 'bg-gray-400 cursor-not-allowed text-white' 
+                : 'bg-red-500 hover:bg-red-600 text-white'
+            }`}
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
