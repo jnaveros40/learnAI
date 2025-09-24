@@ -1,8 +1,18 @@
 "use client";
+import "./dashboard.css";
+
+
 
 import React, { useEffect, useState } from "react";
 import { signOut, onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
+import Sidebar from "../../components/dashboard/Sidebar";
+import ProgressOverview from "../../components/dashboard/ProgressOverview";
+import ContinueLearning from "../../components/dashboard/ContinueLearning";
+import RecentAchievements from "../../components/dashboard/RecentAchievements";
+import UpcomingLessons from "../../components/dashboard/UpcomingLessons";
+import WeeklyGoals from "../../components/dashboard/WeeklyGoals";
+import LearningStreak from "../../components/dashboard/LearningStreak";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -54,37 +64,29 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <nav className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <h1 className="text-xl font-semibold">LearnAI Dashboard</h1>
-            </div>
-            <div className="flex items-center">
-              <button
-                onClick={handleLogout}
-                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition duration-200"
-              >
-                Cerrar sesión
-              </button>
-            </div>
+    <div className="dashboard-layout">
+      <Sidebar />
+      <main className="dashboard-main">
+        <header className="dashboard-header">
+          <div className="dashboard-title">
+            <h1>Welcome back, Alex!</h1>
+            <p>Continue your English learning journey</p>
           </div>
-        </div>
-      </nav>
-
-      <div className="max-w-7xl mx-auto py-6 px-4">
-        <div className="bg-white overflow-hidden shadow rounded-lg">
-          <div className="px-4 py-5 sm:p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              ¡Bienvenido a tu plataforma de aprendizaje!
-            </h2>
-            <p className="text-gray-600">
-              Has iniciado sesión exitosamente. Aquí podrás acceder a todos tus cursos y contenido educativo.
-            </p>
+          <button onClick={handleLogout} className="logout-btn">Log out</button>
+        </header>
+        <div className="dashboard-content">
+          <div className="dashboard-row">
+            <ProgressOverview />
+            <UpcomingLessons />
           </div>
+          <div className="dashboard-row">
+            <ContinueLearning />
+            <WeeklyGoals />
+            <LearningStreak />
+          </div>
+          <RecentAchievements />
         </div>
-      </div>
+      </main>
     </div>
   );
 };
