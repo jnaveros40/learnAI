@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
+import Footer from "../components/Footer";
+
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(true);
@@ -105,6 +107,7 @@ const LoginPage = () => {
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

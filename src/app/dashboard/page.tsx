@@ -13,6 +13,7 @@ import RecentAchievements from "../../components/dashboard/RecentAchievements";
 import UpcomingLessons from "../../components/dashboard/UpcomingLessons";
 import WeeklyGoals from "../../components/dashboard/WeeklyGoals";
 import LearningStreak from "../../components/dashboard/LearningStreak";
+import Footer from "../components/Footer";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -64,29 +65,36 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="dashboard-layout">
-      <Sidebar />
-      <main className="dashboard-main">
-        <header className="dashboard-header">
-          <div className="dashboard-title">
-            <h1>Welcome back, Alex!</h1>
-            <p>Continue your English learning journey</p>
+    <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="flex flex-1">
+        <Sidebar />
+        <main className="flex-1 p-8">
+          <header className="flex justify-between items-center mb-8">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
+                Welcome back, {user?.displayName?.split(' ')[0] || 'Student'}!
+              </h1>
+              <p className="text-gray-500 dark:text-gray-400">Continue your English learning journey</p>
+            </div>
+            <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+              Log out
+            </button>
+          </header>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2 space-y-8">
+              <ContinueLearning />
+              <ProgressOverview />
+            </div>
+            <div className="space-y-8">
+              <UpcomingLessons />
+              <RecentAchievements />
+              <WeeklyGoals />
+              <LearningStreak />
+            </div>
           </div>
-          <button onClick={handleLogout} className="logout-btn">Log out</button>
-        </header>
-        <div className="dashboard-content">
-          <div className="dashboard-row">
-            <ProgressOverview />
-            <UpcomingLessons />
-          </div>
-          <div className="dashboard-row">
-            <ContinueLearning />
-            <WeeklyGoals />
-            <LearningStreak />
-          </div>
-          <RecentAchievements />
-        </div>
-      </main>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 };
