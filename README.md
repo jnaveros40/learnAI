@@ -1,38 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LearnMioAI - Comprehensive English Learning Platform
 
-## Getting Started
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/andrecodevs-projects/v0-comprehensive-english-platform)
+[![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 
-First, run the development server:
+Una plataforma integral de aprendizaje de inglés impulsada por IA, diseñada para proporcionar una experiencia de aprendizaje personalizada y efectiva.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🌟 Características
 
-npx next dev --port 3012 --turbopack
+- **Tutoría IA Personalizada**: Lecciones adaptativas con inteligencia artificial
+- **Dashboard Interactivo**: Seguimiento del progreso y estadísticas detalladas
+- **Sistema de Conversación**: Práctica de conversación en inglés con IA
+- **Análisis de Rendimiento**: Métricas y feedback detallado del aprendizaje
+- **Interfaz Multilingüe**: Soporte para múltiples idiomas con next-intl
+- **Diseño Responsivo**: Optimizado para desktop y móvil
+- **Tema Oscuro/Claro**: Soporte para modos de visualización personalizados
+
+## 🛠️ Tecnologías Utilizadas
+
+### Frontend
+- **Next.js 15.2.4** - Framework React con App Router
+- **React 19** - Biblioteca para interfaces de usuario
+- **TypeScript** - JavaScript con tipado estático
+- **Tailwind CSS** - Framework de estilos utilitarios
+- **Radix UI** - Componentes primitivos accesibles
+- **Lucide React** - Iconos modernos
+
+### IA y Backend
+- **AI SDK** - Integración con modelos de IA (OpenAI)
+- **Next-intl** - Internacionalización
+- **Firebase** - Base de datos y autenticación
+- **Zustand** - Gestión de estado
+- **TanStack Query** - Gestión de datos del servidor
+
+### Herramientas de Desarrollo
+- **ESLint** - Linting de código
+- **PostCSS** - Procesamiento de CSS
+- **Autoprefixer** - Prefijos CSS automáticos
+
+## 🚀 Instalación
+
+### Prerrequisitos
+- Node.js 18+
+- npm o yarn
+
+### Pasos de Instalación
+
+1. **Clona el repositorio**
+   ```bash
+   git clone https://github.com/Andrecodev/learnMioAI.git
+   cd learnMioAI
+   ```
+
+2. **Instala las dependencias**
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+3. **Configura las variables de entorno**
+   Crea un archivo `.env.local` en la raíz del proyecto:
+   ```env
+   OPENAI_API_KEY=tu_clave_openai
+   FIREBASE_API_KEY=tu_clave_firebase
+   # Agrega otras variables necesarias
+   ```
+
+4. **Ejecuta el servidor de desarrollo**
+   ```bash
+   npm run dev
+   ```
+
+5. **Abre tu navegador**
+   Ve a [http://localhost:3000](http://localhost:3000)
+
+## 📖 Uso
+
+### Scripts Disponibles
+
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Construye la aplicación para producción
+- `npm run start` - Inicia el servidor de producción
+- `npm run lint` - Ejecuta el linter
+
+### Estructura del Proyecto
+
+```
+learnMioAI/
+├── app/                    # Páginas y layouts (App Router)
+│   ├── analytics/         # Página de análisis
+│   ├── api/               # APIs del backend
+│   │   ├── ai/           # Endpoints de IA
+│   │   └── lessons/      # Endpoints de lecciones
+│   ├── dashboard/        # Dashboard principal
+│   ├── lessons/          # Páginas de lecciones
+│   └── tutoring/         # Página de tutoría
+├── components/            # Componentes reutilizables
+│   ├── ui/               # Componentes de UI (shadcn/ui)
+│   └── ...               # Otros componentes
+├── contexts/              # Contextos de React
+├── docs/                  # Documentación
+├── hooks/                 # Hooks personalizados
+├── i18n/                  # Configuración de internacionalización
+├── lib/                   # Utilidades y configuraciones
+├── messages/              # Archivos de traducción
+├── public/                # Archivos estáticos
+├── scripts/               # Scripts de base de datos
+├── stores/                # Estado global (Zustand)
+└── styles/                # Estilos globales
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 Internacionalización
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+El proyecto soporta múltiples idiomas usando next-intl. Los archivos de traducción se encuentran en la carpeta `messages/`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📊 Base de Datos
 
-## Learn More
+Los scripts de base de datos están disponibles en `scripts/`:
+- `database-schema.sql` - Esquema de la base de datos
+- `seed-data.sql` - Datos de ejemplo
 
-To learn more about Next.js, take a look at the following resources:
+## 🤝 Contribución
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 Licencia
 
-## Deploy on Vercel
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🙏 Agradecimientos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [v0.app](https://v0.app) - Por la generación inicial del proyecto
+- [shadcn/ui](https://ui.shadcn.com) - Por los componentes de UI
+- [Vercel](https://vercel.com) - Por el hosting y deployment
+
+## 📞 Contacto
+
+- **Autor**: Andrecodev
+- **GitHub**: [https://github.com/Andrecodev](https://github.com/Andrecodev)
+- **Proyecto**: [https://github.com/Andrecodev/learnMioAI](https://github.com/Andrecodev/learnMioAI)
+
+---
+
+*Desarrollado con ❤️ para el aprendizaje efectivo del inglés*
