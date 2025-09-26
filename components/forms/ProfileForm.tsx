@@ -7,7 +7,7 @@ import { ProfileFormData } from '@/src/types/forms';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
-import { useProfileFormStore } from '@/stores/ui-store';
+import { useProfileFormStore } from '@/src/stores/ui-store';
 import { useBatchProfileSave } from '@/hooks/use-api';
 
 export default function ProfileForm() {
