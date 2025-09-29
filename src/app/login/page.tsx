@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Loader2, BookOpen, Brain, Users, Award, AlertCircle } from "lucide-react"
-import { useAuth } from "@/src/contexts/auth-context"
+import { useAuth } from "@/contexts/auth-context"
 import { useTranslations } from "next-intl"
 
 export default function LoginPage() {

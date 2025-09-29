@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useTranslations } from 'next-intl'
-import { useAuth } from '@/src/contexts/auth-context'
+import { useAuth } from '@/contexts/auth-context'
 import {
   Home,
   BookOpen,

@@ -2,13 +2,13 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/src/contexts/auth-context';
-import { ProfileFormData } from '@/src/types/forms';
+import { useAuth } from '@/contexts/auth-context';
+import { ProfileFormData } from '@/types/forms';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
-import { useProfileFormStore } from '@/src/stores/ui-store';
-import { useBatchProfileSave } from '@/src/hooks/use-api';
+import { useProfileFormStore } from '@/stores/ui-store';
+import { useBatchProfileSave } from '@/hooks/use-api';
 
 export default function ProfileForm() {
   // Zustand store for form state management
