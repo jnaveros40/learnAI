@@ -61,19 +61,6 @@ learnMioAI/
 │   │       ├── QueryProvider/
 │   │       └── I18nProvider/
 │   ├── hooks/                     # Custom hooks organizados
-│   │   ├── api/                   # Hooks para API calls
-│   │   │   ├── useAuth.ts
-│   │   │   ├── useLessons.ts
-│   │   │   ├── useProfile.ts
-│   │   │   └── useAnalytics.ts
-│   │   ├── ui/                    # Hooks para UI
-│   │   │   ├── useLocalStorage.ts
-│   │   │   ├── useDebounce.ts
-│   │   │   └── useMediaQuery.ts
-│   │   └── features/              # Hooks específicos por feature
-│   │       ├── useLearningPath.ts
-│   │       ├── useChatBot.ts
-│   │       └── useProgress.ts
 │   ├── lib/                       # Librerías y utilidades
 │   │   ├── api/                   # Configuración de APIs
 │   │   │   ├── client.ts          # Cliente HTTP configurado
