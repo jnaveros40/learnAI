@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/contexts/auth-context';
+import { useAuth } from '@/src/contexts/auth-context';
 import { ProfileFormData } from '@/src/types/forms';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
