@@ -8,7 +8,7 @@ import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import { useProfileFormStore } from '@/src/stores/ui-store';
-import { useBatchProfileSave } from '@/hooks/use-api';
+import { useBatchProfileSave } from '@/src/hooks/use-api';
 
 export default function ProfileForm() {
   // Zustand store for form state management

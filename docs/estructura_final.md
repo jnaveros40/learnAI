@@ -7,7 +7,10 @@
 ```
 learnMioAI/
 ├── .env/                           # Variables de entorno
-│   
+│   ├── .env.local
+│   ├── .env.local.example
+│   ├── .env.development
+│   └── .env.production
 ├── .github/                        # GitHub workflows
 │   └── workflows/
 │       ├── ci.yml
@@ -19,9 +22,51 @@ learnMioAI/
 │   ├── development.md             # Guía de desarrollo
 │   └── architecture.md            # Documentación de arquitectura
 ├── public/                        # Assets públicos
-
+│   ├── images/
+│   │   ├── icons/                 # Iconos de la app
+│   │   ├── logos/                 # Logos y branding
+│   │   ├── placeholders/          # Imágenes placeholder
+│   │   └── screenshots/           # Screenshots para docs
+│   ├── locales/                   # Archivos de localización (si se necesitan assets)
+│   └── favicon.ico
 ├── src/                           # Código fuente principal
 │   ├── app/                       # Next.js App Router
+│   │   ├── (auth)/                # Grupo de rutas de autenticación
+│   │   │   ├── login/
+│   │   │   ├── register/
+│   │   │   └── layout.tsx
+│   │   ├── (dashboard)/           # Grupo de rutas protegidas
+│   │   │   ├── dashboard/
+│   │   │   ├── profile/
+│   │   │   ├── settings/
+│   │   │   └── layout.tsx
+│   │   ├── (learning)/            # Grupo de rutas de aprendizaje
+│   │   │   ├── lessons/
+│   │   │   ├── tutoring/
+│   │   │   ├── practice/
+│   │   │   └── layout.tsx
+│   │   ├── (analytics)/           # Grupo de rutas de análisis
+│   │   │   ├── analytics/
+│   │   │   ├── progress/
+│   │   │   └── layout.tsx
+│   │   ├── api/                   # API Routes organizadas
+│   │   │   ├── auth/              # Autenticación
+│   │   │   ├── user/              # Gestión de usuarios
+│   │   │   ├── learning/          # Funciones de aprendizaje
+│   │   │   │   ├── lessons/
+│   │   │   │   ├── progress/
+│   │   │   │   └── recommendations/
+│   │   │   ├── ai/                # Servicios de IA
+│   │   │   │   ├── conversation/
+│   │   │   │   ├── feedback/
+│   │   │   │   └── adaptive/
+│   │   │   └── integrations/      # APIs externas
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── loading.tsx
+│   │   ├── error.tsx
+│   │   └── not-found.tsx
 │   ├── components/                # Componentes organizados por funcionalidad
 │   │   ├── ui/                    # Componentes base (shadcn/ui)
 │   │   │   ├── forms/             # Elementos de formulario
